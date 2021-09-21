@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/next-auth": "^3.15.0",
     "@types/react-icons": "^3.0.0",
+    "faunadb": "^4.4.1",
     "next": "11.1.2",
+    "next-auth": "^3.29.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sass": "^1.41.1"
+    "sass": "^1.41.1",
+    "stripe": "^8.176.0"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
