@@ -4,6 +4,7 @@ import styles from './styles.module.scss';
 import { signIn, useSession } from 'next-auth/client';
 import { getStripeJs } from '../../services/stripe-js';
 import { api } from '../../services/api';
+import { useRouter } from 'next/dist/client/router';
 
 interface SubscribeButtonProps {
   priceId: string
@@ -11,23 +12,29 @@ interface SubscribeButtonProps {
 
 const SubscribeButton: React.FC<SubscribeButtonProps> = ({ priceId }) => {
   const [session] = useSession();
+  const router = useRouter();
 
   async function handleSubscribe() {
     if(!session) {
       signIn('github');
       return;
-    } else {
-      try {
-        const response = await api.post('/subscribe');
+    }
 
-        const { sessionId } = response.data;
-        
-        const stripe = await getStripeJs();
+    if(session.activeSubscription) {
+      router.push('/posts');
+      return;
+    }
 
-        return stripe.redirectToCheckout({ sessionId });
-      } catch (e) {
-        alert(e.message)
-      }
+    try {
+      const response = await api.post('/subscribe');
+
+      const { sessionId } = response.data;
+      
+      const stripe = await getStripeJs();
+
+      return stripe.redirectToCheckout({ sessionId });
+    } catch (e) {
+      alert(e.message)
     }
   }
 
