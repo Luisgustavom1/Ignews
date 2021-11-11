@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 import { signIn, useSession } from 'next-auth/client';
 import { getStripeJs } from '../../services/stripe-js';
 import { api } from '../../services/api';
-import useRouter from 'next/router';
+import { useRouter } from 'next/router';
 
 const SubscribeButton: React.FC = () => {
   const [session] = useSession();
