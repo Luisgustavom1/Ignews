@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import Header from '.';
-import ActiveLink from '.';
 
 jest.mock('next/router', () => {
     return {
