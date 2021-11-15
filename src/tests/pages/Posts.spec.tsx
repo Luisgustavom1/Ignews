@@ -16,39 +16,39 @@ describe('Page Posts', () => {
         expect(screen.getByText('My New Post')).toBeInTheDocument()
     })
 
-    it('load initials data', async () => {
-        const getPrismicClientMocked = mocked(getPrismicClient)
+    // it('load initials data', async () => {
+    //     const getPrismicClientMocked = mocked(getPrismicClient)
 
-        getPrismicClientMocked.mockReturnValueOnce({
-            query: jest.fn().mockResolvedValueOnce({
-                results: [{
-                    uid: 'fake-slug-post',
-                    data: {
-                        title: [
-                            { type: 'heading', text: 'fake-title-post'}
-                        ],
-                        content: [
-                            {type: 'paragraph', text: 'fake-excerpt-post'}
-                        ]
-                    },
-                    last_publication_date: '01-10-2021'
-                }]
-            })
-        } as any)
+    //     getPrismicClientMocked.mockReturnValueOnce({
+    //         query: jest.fn().mockResolvedValueOnce({
+    //             results: [{
+    //                 uid: 'fake-slug-post',
+    //                 data: {
+    //                     title: [
+    //                         { type: 'heading', text: 'fake-title-post'}
+    //                     ],
+    //                     content: [
+    //                         {type: 'paragraph', text: 'fake-excerpt-post'}
+    //                     ]
+    //                 },
+    //                 last_publication_date: '01-10-2021'
+    //             }]
+    //         })
+    //     } as any)
 
-        const response = await getStaticProps({})
+    //     const response = await getStaticProps({})
 
-        expect(response).toEqual(
-            expect.objectContaining({
-                props: {
-                    posts: [{
-                        slug: 'fake-slug-post',
-                        title: 'fake-title-post',
-                        excerpt: 'fake-excerpt-post',
-                        updatedAt: '10 de Janeiro de 2021'
-                    }]
-                }
-            })
-        )
-    })
+    //     expect(response).toEqual(
+    //         expect.objectContaining({
+    //             props: {
+    //                 posts: [{
+    //                     slug: 'fake-slug-post',
+    //                     title: 'fake-title-post',
+    //                     excerpt: 'fake-excerpt-post',
+    //                     updatedAt: '10 de Janeiro de 2021'
+    //                 }]
+    //             }
+    //         })
+    //     )
+    // })
 })

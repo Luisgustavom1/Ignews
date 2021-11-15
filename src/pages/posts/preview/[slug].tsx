@@ -8,7 +8,7 @@ import styles from '../post.module.scss';
 
 import { getPrismicClient } from '../../../services/prismic';
 import { useSession } from 'next-auth/client';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 
 interface PostPreviwProps {
     post: {
