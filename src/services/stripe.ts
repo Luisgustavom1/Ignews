@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { version } from '../../package.json';
+import packageData from '../../package.json';
 
 export const stripe = new Stripe(
     process.env.STRIPE_SECRET_KEY,
@@ -7,7 +7,7 @@ export const stripe = new Stripe(
         apiVersion: '2020-08-27',
         appInfo: {
             name: 'ignews',
-            version
+            version: packageData.version
         }
-    }
+    },
 );
